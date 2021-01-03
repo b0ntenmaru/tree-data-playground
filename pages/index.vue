@@ -32,7 +32,7 @@ export default Vue.extend({
      * バックエンドから受け取った配列を階層構造データに変換する
      */
     convertToTree(datas: any[], id = null, link = 'parent_id') {
-      const rootNode = datas.filter((data) => data[link] === id)
+      const rootNode = datas.filter((data) => data[link] === id);
       const convertedTree: any = rootNode.map((data) => ({
         ...data,
         children: this.convertToTree(datas, data.id),
