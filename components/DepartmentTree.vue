@@ -1,11 +1,12 @@
 <template>
   <div class="department-tree-container">
     <Draggable
-      group="boards"
+      group="departments"
       draggable=".department-list"
       handle=".handle"
       :animation="300"
       class="draggable-wrapper"
+      @input="emitter"
     >
       <div
         v-for="(department, index) in value"
@@ -16,7 +17,7 @@
           {{ department.name }}
         </div>
 
-        <Draggable group="items" :animation="300">
+        <Draggable group="members" :animation="300" @input="emitter">
           <div v-for="(member, i) in department.members" :key="i">
             {{ member.name }}
           </div>
@@ -47,6 +48,7 @@ export default Vue.extend({
 
   methods: {
     emitter(value: any) {
+      console.log(value)
       this.$emit('input', value);
     },
   },

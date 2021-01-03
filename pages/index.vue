@@ -1,6 +1,9 @@
 <template>
   <div>
     <DepartmentTree v-model="departments" />
+    <div class="json">
+      {{ convertedTreeJson }}
+    </div>
   </div>
 </template>
 
@@ -27,6 +30,12 @@ export default Vue.extend({
     };
   },
 
+  computed: {
+    convertedTreeJson() {
+      return JSON.stringify(this.departments);
+    },
+  },
+
   methods: {
     /**
      * バックエンドから受け取った配列を階層構造データに変換する
@@ -42,3 +51,9 @@ export default Vue.extend({
   },
 });
 </script>
+<style scoped lang="scss">
+div.json {
+  position: absolute;
+  top: 50%;
+}
+</style>
