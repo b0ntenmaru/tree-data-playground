@@ -1,11 +1,18 @@
 <template>
-  <div>{{ departments }}</div>
+  <div>
+    <DepartmentTree v-model="departments" />
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import DepartmentTree from '@/components/DepartmentTree.vue';
 
 export default Vue.extend({
+  components: {
+    DepartmentTree,
+  },
+
   async fetch() {
     const convertedDepartmentTree = await fetch(
       'http://localhost:3000/api/departments'
