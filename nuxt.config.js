@@ -3,6 +3,7 @@ export default {
   ssr: false,
 
   srcDir: './web/',
+  serverMiddleware: ['~~/server/'],
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
